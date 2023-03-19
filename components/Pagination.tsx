@@ -1,6 +1,6 @@
 "use client";
 
-import { PokemonInfo } from "./page";
+import { PokemonInfo } from "../app/pokedex/page";
 
 type Props = { page: number; pokemon: PokemonInfo[]; handlePage: Function };
 

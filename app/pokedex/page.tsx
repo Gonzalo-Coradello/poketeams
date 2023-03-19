@@ -1,8 +1,4 @@
-import { Suspense } from "react";
-import Card from "./Card";
-import List from "./List";
-import Pagination from "./Pagination";
-import Loading from "./loading";
+import List from "../../components/List";
 
 export type Pokemon = {
   name: string;
@@ -71,7 +67,6 @@ export default async function Pokedex() {
       <div>
         <List pokemon={pokemon} />
       </div>
-      {/* <Pagination data={data} /> */}
     </>
   );
 }

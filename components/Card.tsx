@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { PokemonInfo } from "./page";
+import { PokemonInfo } from "../app/pokedex/page";
 
 export default function Card({
   pokemon: { name, img, id },

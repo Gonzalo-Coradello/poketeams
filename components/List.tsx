@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Card from "./Card";
-import { PokemonInfo } from "./page";
+import { PokemonInfo } from "../app/pokedex/page";
 import Pagination from "./Pagination";
 import Search from "./Search";
 import Filter from "./Filter";
