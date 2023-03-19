@@ -1,0 +1,26 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Team {
+  id        Int       @id @default(autoincrement())
+  user      String
+  createdAt DateTime  @default(now())
+  team      Pokemon[]
+}
+
+model Pokemon {
+  id     Int      @id
+  name   String
+  types  String[]
+  img    String
+  height Int
+  weight Int
+  teamId Int
+  team   Team     @relation(fields: [teamId], references: [id])
+}
