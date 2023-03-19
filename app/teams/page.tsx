@@ -1,4 +1,4 @@
-import Team from "@/components/Team";
+import Team from "@/app/components/Team";
 import prisma from "@/lib/prisma";
 
 export default async function Teams() {

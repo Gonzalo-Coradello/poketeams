@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { getData } from "../../page";
 import { PokemonInfo } from "../../page";
+import AddButton from "@/app/components/AddButton";
+import Link from "next/link";
 
 export default async function PodemonDetail({
   params,
@@ -19,6 +21,7 @@ export default async function PodemonDetail({
 
   return (
     <div>
+      <Link href='/pokedex'>All pokemon</Link>
       <h1>{name}</h1>
       <Image src={img} alt={name} width={250} height={250} />
       <div>
@@ -26,7 +29,7 @@ export default async function PodemonDetail({
           <p key={type}>{type}</p>
         ))}
       </div>
-      <button>Add to my team</button>
+      <AddButton pokemon={pokemon} />
     </div>
   );
 }

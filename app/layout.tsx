@@ -1,6 +1,8 @@
 import './globals.css'
 import styles from "./page.module.css";
 import { Inter } from "next/font/google";
+import { ContextProvider } from '@/app/context/TeamContext';
+import Navbar from '@/app/components/Navbar';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* Navbar */}
+        <Navbar />
         <main className={styles.main}>
-          {children}
+          <ContextProvider>
+            {children}
+          </ContextProvider>
         </main>
         {/* Footer */}
       </body>
