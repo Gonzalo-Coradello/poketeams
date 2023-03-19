@@ -11,6 +11,7 @@ export default async function PodemonDetail({
 
   const pokemon: PokemonInfo = {
     ...data,
+    types: data.types.map((type: { type: { name: string }}) => type.type.name),
     img: data.sprites.other["official-artwork"].front_default,
   };
 
@@ -21,10 +22,11 @@ export default async function PodemonDetail({
       <h1>{name}</h1>
       <Image src={img} alt={name} width={250} height={250} />
       <div>
-        {types.map((t) => (
-          <p key={t.type.name}>{t.type.name}</p>
+        {types.map((type) => (
+          <p key={type}>{type}</p>
         ))}
       </div>
+      <button>Add to my team</button>
     </div>
   );
 }

@@ -14,11 +14,7 @@ export type Data = {
 export interface PokemonInfo {
   id: number;
   name: string;
-  types: {
-    type: {
-      name: string;
-    };
-  }[];
+  types: string[];
   height: number;
   weight: number;
   img: string;
@@ -42,7 +38,7 @@ async function getIndividualData(pokemon: Pokemon) {
   const pokemonInfo: PokemonInfo = {
     id: data.id,
     name: data.name,
-    types: data.types,
+    types: data.types.map((type: { type: { name: string }}) => type.type.name),
     height: data.height,
     weight: data.weight,
     img: data.sprites.other["official-artwork"].front_default,
