@@ -15,7 +15,8 @@ model Team {
 }
 
 model Pokemon {
-  id     Int      @id
+  pokeId Int      @id @default(autoincrement())
+  id     Int
   name   String
   types  String[]
   img    String

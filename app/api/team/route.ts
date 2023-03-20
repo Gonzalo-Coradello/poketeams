@@ -1,13 +1,21 @@
 import prisma from "@/lib/prisma";
+import { type NextRequest, NextResponse } from "next/server";
 
-export default function POST(req: Request, res: Response) {
+export async function POST(req: NextRequest) {
 
-    // const team = req.body.team
+    const { user, team } = await req.json()
 
-    // const result = await prisma.team.create({
-    //     data: {
+    const result = await prisma.team.create({
+        data: {
+            user,
+            team: {
+                createMany: {
+                    data: team
+                }
+            }
+        }
+    })
 
-    //     }
-    // })
+    return NextResponse.json({ result })
 
 }

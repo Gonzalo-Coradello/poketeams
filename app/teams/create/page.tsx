@@ -13,16 +13,25 @@ export default function Create() {
     setName(value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!user) return console.log("You must provide a username");
     // @ts-ignore
     if (team.length < 1)
       return console.log("Your team must have at least 1 Pokémon");
 
-    // POST to API
 
-    console.log(user, team);
+    const data = {user, team}
+
+    await fetch('/api/team', {
+        method: 'POST',
+        headers: {"Content-type": "application/json;charset=utf-8"},
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(json => console.log(json))
+    .catch(err => console.log(err))
+
     console.log("Team added to db");
   };
 
