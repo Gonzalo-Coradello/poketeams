@@ -1,5 +1,5 @@
 import './globals.css'
-import styles from "./page.module.css";
+// import styles from "./page.module.css";
 import { Inter } from "next/font/google";
 import { ContextProvider } from '@/app/context/TeamContext';
 import Navbar from '@/app/components/Navbar';
@@ -18,9 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} max-w-[1180px] mx-auto px-4 text-center space-y-8`}>
         <Navbar />
-        <main className={styles.main}>
+        <main>
           <ContextProvider>
             {children}
           </ContextProvider>

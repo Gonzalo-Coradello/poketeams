@@ -11,11 +11,10 @@ export default function Filter({ handleSelect, type }: Props) {
 
     return (
         <form>
-            <label htmlFor="type-select">Filter by type</label>
-            <select name="types" id="type-select" value={type} onChange={handleSelect} >
-                <option value="">All types</option>
+            <select name="types" id="type-select" value={type} onChange={handleSelect} className="font-extralight text-sm rounded py-1 px-3" >
+                <option className="font-extralight text-sm" value="">All types</option>
 
-                { types.map(type => <option key={type} value={type} >{type}</option> ) }
+                { types.map(type => <option key={type} value={type} className="font-extralight text-sm" >{type}</option> ) }
             </select>
         </form>
     )

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PokemonInfo } from "../pokedex/page";
+import LinkButton from "./LinkButton";
 
 export default function Card({
   pokemon: { name, img, id },
@@ -8,10 +9,10 @@ export default function Card({
   pokemon: PokemonInfo;
 }) {
   return (
-    <div>
-      <h2>{name}</h2>
+    <div className="border rounded p-4 grid justify-center gap-4">
+      <h2 className="text-xl capitalize text-center">{name}</h2>
       <Image src={img} alt={name} width={250} height={250} />
-      <Link href={`/pokedex/pokemon/${id}`}>Detalles</Link>
+      <LinkButton href={`/pokedex/pokemon/${id}`} >Details</LinkButton>
     </div>
   );
 }

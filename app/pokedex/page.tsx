@@ -59,8 +59,8 @@ export default async function Pokedex() {
 
   return (
     <>
-      <h1>Poketeams</h1>
-      <div>
+      <h1 className="text-3xl mb-4">Pokédex</h1>
+      <div className="mb-4">
         <List pokemon={pokemon} />
       </div>
     </>

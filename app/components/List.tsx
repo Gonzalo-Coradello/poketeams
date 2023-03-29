@@ -31,24 +31,30 @@ export default function List({ pokemon }: { pokemon: PokemonInfo[] }) {
     setPage(1);
   };
 
-  const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSelect: Function = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selected = e.target.value
     setSearch('')
     setType(selected)
-    setPokemonList(pokemon.filter(p => p.types.includes(selected)))
+    selected
+      ? setPokemonList(pokemon.filter(p => p.types.includes(selected)))
+      : setPokemonList(initialValue)
   }
 
   return (
-    <div>
-      <Search
-        search={search}
-        setSearch={setSearch}
-        handleChange={handleChange}
-      />
-      <Filter handleSelect={handleSelect} type={type} />
-      {pokemonList.map((pokemon) => (
-        <Card key={pokemon.name} pokemon={pokemon} />
-      ))}
+    <div className="space-y-4">
+      <div className="flex flex-col gap-2 justify-between md:flex-row">
+        <Search
+          search={search}
+          setSearch={setSearch}
+          handleChange={handleChange}
+        />
+        <Filter handleSelect={handleSelect} type={type} />
+      </div>
+      <div className="grid gap-4 grid-cols-fluid justify-items-center">
+        {pokemonList.map((pokemon) => (
+          <Card key={pokemon.name} pokemon={pokemon} />
+        ))}
+      </div>
       {(!search && !type) && (
         <Pagination page={page} pokemon={pokemon} handlePage={handlePage} />
       )}

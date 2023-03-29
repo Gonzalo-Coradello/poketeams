@@ -11,9 +11,10 @@ export default function Navbar() {
 
     return (
     <header>
-        <nav>
-            <div>
-                <ul>
+        <nav className="py-8 border-b-2">
+            <div className="flex justify-between">
+                <h1>Poketeams</h1>
+                <ul className="flex gap-8">
                     { links.map(link => <li key={link.slug}><Link href={link.url}>{ link.slug }</Link></li>) }
                 </ul>
             </div>

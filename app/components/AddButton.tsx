@@ -3,6 +3,7 @@
 import { useContext } from "react";
 import { TeamContext } from "@/app/context/TeamContext";
 import { PokemonInfo } from "@/app/pokedex/page";
+import Button from "./Button";
 
 export default function AddButton({ pokemon }: { pokemon: PokemonInfo }) {
   const { team, addPokemon, removePokemon } = useContext(TeamContext);
@@ -17,9 +18,9 @@ export default function AddButton({ pokemon }: { pokemon: PokemonInfo }) {
 
   return (
    !team?.find(p => p.id === pokemon.id) ?
-  <button onClick={handleAdd}>Add to my team</button> :
+  <Button handleClick={handleAdd}>Add to my team</Button> :
     // @ts-ignore
-  <button onClick={() => removePokemon(pokemon.id)}>Remove from my team</button>
+  <Button handleClick={() => removePokemon(pokemon.id)}>Remove from my team</Button>
 
   )
 }

@@ -20,16 +20,21 @@ export default async function PodemonDetail({
   const { id, name, img, types, height, weight } = pokemon;
 
   return (
-    <div>
-      <Link href='/pokedex'>All pokemon</Link>
-      <h1>{name}</h1>
-      <Image src={img} alt={name} width={250} height={250} />
-      <div>
-        {types.map((type) => (
-          <p key={type}>{type}</p>
-        ))}
+    <div className="max-w-[1180px] mx-auto">
+      <Link href='/pokedex' className="block text-md text-left transition-all duration-300 hover:opacity-50">All pokemon</Link>
+      <div className="grid justify-center border rounded w-fit mx-auto my-4 py-8 px-8 gap-4">
+        <h1 className="text-3xl capitalize">{name}</h1>
+        <Image src={img} alt={name} width={250} height={250} />
+        <div>
+          <p>Type</p>
+          <div className="mt-2 flex justify-center gap-4 capitalize">
+            {types.map((type) => (
+              <p key={type} className={`bg-${type} py-1 px-3 rounded-md`}>{type}</p>
+            ))}
+          </div>
+        </div>
+        <AddButton pokemon={pokemon} />
       </div>
-      <AddButton pokemon={pokemon} />
     </div>
   );
 }

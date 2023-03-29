@@ -16,9 +16,9 @@ export default function Search({ search, setSearch, handleChange }: Props) {
 
     return (
         <div>
-            <form>
-                <input type="text" value={search} onChange={handleChange} />
-                <button onClick={handleClick}>x</button>
+            <form className="relative w-fit mx-auto">
+                <input className="rounded" type="text" value={search} onChange={handleChange} />
+                <button className="absolute top-0 bottom-0 right-2" onClick={handleClick}>x</button>
             </form>
         </div>
     )
