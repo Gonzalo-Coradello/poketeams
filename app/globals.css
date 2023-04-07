@@ -104,6 +104,10 @@ a {
   text-decoration: none;
 }
 
+.text-shadow {
+  text-shadow: 2px 2px 10px black;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

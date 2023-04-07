@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/app/components/Button";
 import { TeamContext } from "@/app/context/TeamContext";
 import Image from "next/image";
 import { useContext } from "react";
@@ -36,30 +37,30 @@ export default function Create() {
   };
 
   return (
-    <div>
-      <h1>Create team</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Username</label>
-        <input type="text" value={user} onChange={handleChange} />
+    <div className="max-w-[800px] mx-auto space-y-4 mb-4">
+      <h1 className="text-3xl">Create team</h1>
+      <form onSubmit={handleSubmit} className="space-y-4" >
+        <input type="text" placeholder="Username" value={user} onChange={handleChange} className="py-1 px-3 rounded" />
 
-        <div>
+        <div className="flex justify-center gap-4 flex-wrap">
           {/* @ts-ignore */}
           {team.map((pokemon) => (
-            <div key={pokemon.id}>
-              <h4>{pokemon.name}</h4>
+            <div key={pokemon.id} className="relative border rounded-md p-4">
+              <h4 className="capitalize">{pokemon.name}</h4>
               <Image
                 src={pokemon.img}
                 alt={pokemon.name}
-                width={100}
-                height={100}
+                width={125}
+                height={125}
+                className="mx-auto mt-2"
               />
               {/* @ts-ignore */}
-              <button onClick={() => removePokemon(pokemon.id)}>x</button>
+              <button onClick={() => removePokemon(pokemon.id)} className="absolute top-0 right-2 hover:opacity-50 transition-opacity duration-300" >x</button>
             </div>
           ))}
         </div>
 
-        <button>Share team</button>
+        <Button>Share team</Button>
       </form>
     </div>
   );

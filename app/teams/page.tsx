@@ -10,10 +10,10 @@ export default async function Teams() {
 
   return (
     <div>
-      <h1>Teams</h1>
+      <h1 className="text-3xl">Teams</h1>
 
       <div>
-        {teams.map((team) => (
+        {teams.reverse().map((team) => (
           <Team key={team.id} { ...team } />
         ))}
       </div>

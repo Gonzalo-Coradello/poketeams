@@ -29,7 +29,7 @@ export default async function PodemonDetail({
           <p>Type</p>
           <div className="mt-2 flex justify-center gap-4 capitalize">
             {types.map((type) => (
-              <p key={type} className={`bg-${type} py-1 px-3 rounded-md`}>{type}</p>
+              <p key={type} className={`bg-${type} py-1 px-3 rounded-md text-shadow`}>{type}</p>
             ))}
           </div>
         </div>
