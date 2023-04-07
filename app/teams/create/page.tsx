@@ -1,12 +1,20 @@
 "use client";
 
+import 'react-toastify/dist/ReactToastify.css';
 import Button from "@/app/components/Button";
 import { TeamContext } from "@/app/context/TeamContext";
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { useRouter } from "next/navigation";
+import Loading from "@/app/loading";
+import { NotificationContext } from '@/app/context/NotificationContext';
+import { TbPokeball } from "react-icons/tb"
 
 export default function Create() {
-  const { team, user, setName, removePokemon } = useContext(TeamContext);
+  const { team, user, setName, removePokemon, resetTeam } = useContext(TeamContext);
+  const { setNotification } = useContext(NotificationContext)
+  const [loading, setLoading] = useState(false)
+  const router = useRouter()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -16,13 +24,14 @@ export default function Create() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!user) return console.log("You must provide a username");
+    /* @ts-ignore */
+    if (!user) return setNotification("error", "You must provide a username");
     // @ts-ignore
-    if (team.length < 1)
-      return console.log("Your team must have at least 1 Pokémon");
-
+    if (team.length < 1) return setNotification("error", "Your team must have at least 1 Pokémon");
 
     const data = {user, team}
+
+    setLoading(true)
 
     await fetch('/api/team', {
         method: 'POST',
@@ -30,11 +39,28 @@ export default function Create() {
         body: JSON.stringify(data)
     })
     .then(response => response.json())
-    .then(json => console.log(json))
-    .catch(err => console.log(err))
-
-    console.log("Team added to db");
+    .then(() => {
+      {/* @ts-ignore */}
+      setNotification("success", "Team successfully added to database!")
+      {/* @ts-ignore */}
+      resetTeam()
+      router.push('/teams')
+    })
+    .catch(err => {
+      setLoading(false)
+      console.log(err)
+    })
   };
+
+  const handleRemove = ({ id, name }: {id: number, name: string}) => {
+    const pokemonName = name.charAt(0).toUpperCase().concat(name.slice(1))
+    /* @ts-ignore */
+    removePokemon(id)
+    /* @ts-ignore */
+    setNotification("success", `${pokemonName} was removed from your team`, <TbPokeball size={25}/>)
+  }
+
+  if(loading) return <Loading />
 
   return (
     <div className="max-w-[800px] mx-auto space-y-4 mb-4">
@@ -55,7 +81,7 @@ export default function Create() {
                 className="mx-auto mt-2"
               />
               {/* @ts-ignore */}
-              <button onClick={() => removePokemon(pokemon.id)} className="absolute top-0 right-2 hover:opacity-50 transition-opacity duration-300" >x</button>
+              <button onClick={() => handleRemove(pokemon)} className="absolute top-0 right-2 hover:opacity-50 transition-opacity duration-300" >x</button>
             </div>
           ))}
         </div>
