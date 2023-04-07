@@ -8,7 +8,8 @@ interface Context {
   team: PokemonInfo[];
   addPokemon: (pokemon: PokemonInfo) => void;
   removePokemon: (id: number) => void;
-  setName: Function;
+  setName: (name: string) => void;
+  resetTeam: () => void
 }
 
 export const TeamContext = createContext<Partial<Context>>({
@@ -43,8 +44,12 @@ export const ContextProvider = ({
     setUser(name);
   };
 
+  const resetTeam = () => {
+    setTeam([])
+  }
+
   return (
-    <TeamContext.Provider value={{ user, team, addPokemon, removePokemon, setName }}>
+    <TeamContext.Provider value={{ user, team, addPokemon, removePokemon, setName, resetTeam }}>
       {children}
     </TeamContext.Provider>
   );
