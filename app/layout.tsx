@@ -3,6 +3,7 @@ import './globals.css'
 import { Inter } from "next/font/google";
 import { ContextProvider } from '@/app/context/TeamContext';
 import Navbar from '@/app/components/Navbar';
+import { NotificationProvider } from './context/NotificationContext';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,9 @@ export default function RootLayout({
         <Navbar />
         <main>
           <ContextProvider>
-            {children}
+            <NotificationProvider>
+              {children}
+            </NotificationProvider>
           </ContextProvider>
         </main>
         {/* Footer */}
