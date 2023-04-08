@@ -33,7 +33,7 @@ export default function Create() {
 
     setLoading(true)
 
-    await fetch('/api/team', {
+    await fetch('/api/teams', {
         method: 'POST',
         headers: {"Content-type": "application/json;charset=utf-8"},
         body: JSON.stringify(data)

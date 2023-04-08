@@ -1,4 +1,5 @@
 import Image from "next/image";
+import pokeball from "@/public/pokeball.png"
 
 type Props = {
     id: number,
@@ -20,17 +21,20 @@ type Pokemon = {
 export default function Team({  user, createdAt, team  }: Props ) {
 
   return (
-    <div className="my-8 max-w-[700px] mx-auto space-y-2">
-      <div className="flex justify-between">
-        <h2>{user}</h2>
-        <p>{createdAt.toLocaleDateString()}</p>
+    <div className="my-8 max-w-[800px] mx-auto space-y-2">
+      <div className="flex justify-between text-lg">
+        <div className="flex font-semibold">
+          <h2>{user}</h2>
+          <Image src={pokeball} alt="pokeball" width={25} height={25} />
+        </div>
+        <p className="font-light">{createdAt.toLocaleDateString()}</p>
       </div>
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+      <div className="flex justify-center flex-wrap gap-4">
         {team.map((pokemon) => (
           <div key={pokemon.id} className="border rounded">
-            <h3 className="text-xl capitalize my-4">{pokemon.name}</h3>
+            <h3 className="text-xl font-semibold capitalize my-4">{pokemon.name}</h3>
             <Image className="mx-auto" src={pokemon.img} alt={pokemon.name} width='250' height='250' />
-            <div className="flex justify-center gap-4 capitalize my-4">
+            <div className="font-medium flex justify-center gap-4 capitalize my-4">
               {pokemon.types.map((type) => (
                 <p key={type} className={`bg-${type} text-sm py-1 px-3 rounded-md text-shadow`}>{type}</p>
               ))}

@@ -1,6 +1,8 @@
 import Team from "@/app/components/Team";
 import prisma from "@/lib/prisma";
 
+export const revalidate = 0;
+
 export default async function Teams() {
   const teams = await prisma.team.findMany({
     include: {
