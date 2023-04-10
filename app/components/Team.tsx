@@ -23,7 +23,7 @@ export default function Team({  user, createdAt, team  }: Props ) {
   return (
     <div className="my-8 max-w-[800px] mx-auto space-y-2">
       <div className="flex justify-between text-lg">
-        <div className="flex font-semibold">
+        <div className="flex items-center gap-[2px] font-semibold">
           <h2>{user}</h2>
           <Image src={pokeball} alt="pokeball" width={25} height={25} />
         </div>

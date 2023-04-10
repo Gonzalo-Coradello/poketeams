@@ -4,6 +4,21 @@ import { PokemonInfo } from "../../page";
 import AddButton from "@/app/components/AddButton";
 import Link from "next/link";
 
+
+
+
+export async function generateMetadata({params} : { params: { id: string } }) {
+  
+  const data = await getData(`https://pokeapi.co/api/v2/pokemon/${params.id}/`);
+
+  const { name } = data
+  const pokemonName = name.charAt(0).toUpperCase().concat(name.slice(1))
+
+  return {
+    title: `${pokemonName} | Pokéteams`
+  }
+}
+
 export default async function PodemonDetail({
   params,
 }: {
@@ -23,7 +38,7 @@ export default async function PodemonDetail({
     <div className="max-w-[1180px] mx-auto">
       <Link href='/pokedex' className="block text-md text-left transition-all duration-300 hover:opacity-50">All pokemon</Link>
       <div className="grid justify-center border rounded w-fit mx-auto my-4 py-8 px-8 gap-4">
-        <h1 className="text-3xl capitalize">{name}</h1>
+        <h2 className="text-3xl capitalize">{name}</h2>
         <Image src={img} alt={name} width={250} height={250} />
         <div>
           <p>Type</p>

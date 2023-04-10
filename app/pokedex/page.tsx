@@ -1,5 +1,9 @@
 import List from "../components/List"
 
+export const metadata = {
+  title: "Pokédex | Pokéteams"
+}
+
 export type Pokemon = {
   name: string;
   url: string;

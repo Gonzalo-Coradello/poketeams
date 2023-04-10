@@ -3,6 +3,10 @@ import prisma from "@/lib/prisma";
 
 export const revalidate = 0;
 
+export const metadata = {
+  title: "Teams | Pokéteams"
+}
+
 export default async function Teams() {
   const teams = await prisma.team.findMany({
     include: {
