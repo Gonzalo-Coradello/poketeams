@@ -33,5 +33,5 @@ module.exports = {
     },
   },
   plugins: [],
-  safelist: [ "bg-normal", "bg-fire", "bg-water", "bg-grass", "bg-electric", "bg-ice", "bg-fighting", "bg-poison", "bg-ground", "bg-flying", "bg-psychic", "bg-bug", "bg-rock", "bg-ghost", "bg-dark", "bg-dragon", "bg-steel", "bg-fairy" ]
+  safelist: [ "bg-normal", "bg-fire", "bg-water", "bg-grass", "bg-electric", "bg-ice", "bg-fighting", "bg-poison", "bg-ground", "bg-flying", "bg-psychic", "bg-bug", "bg-rock", "bg-ghost", "bg-dark", "bg-dragon", "bg-steel", "bg-fairy", "text-fire", "border-fire", "text-grass", "border-grass", "text-water", "border-water" ]
 }
