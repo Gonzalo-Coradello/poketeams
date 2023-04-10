@@ -52,10 +52,7 @@ async function getIndividualData(pokemon: Pokemon) {
 }
 
 export default async function Pokedex() {
-  // const data: Data = await getData("https://pokeapi.co/api/v2/pokemon/?limit=1010");
-  const data: Data = await getData(
-    "https://pokeapi.co/api/v2/pokemon/?limit=151"
-  );
+  const data: Data = await getData("https://pokeapi.co/api/v2/pokemon/?limit=1010");
   const list: Pokemon[] = data.results;
   const pokemon: PokemonInfo[] = await Promise.all(
     list.map(async (el) => await getIndividualData(el))
