@@ -64,13 +64,13 @@ export default function Create() {
 
   return (
     <div className="max-w-[800px] mx-auto space-y-4 mb-4">
-      <h1 className="text-3xl">Create team</h1>
+      <h2 className="text-3xl">Create team</h2>
       <form onSubmit={handleSubmit} className="space-y-4" >
-        <input type="text" placeholder="Username" value={user} onChange={handleChange} className="py-1 px-3 rounded" />
+        <input type="text" placeholder="Username" value={user} onChange={handleChange} className="py-1 px-3 rounded bg-[#2b2a33] text-white" />
 
         <div className="flex justify-center gap-4 flex-wrap">
           {/* @ts-ignore */}
-          {team.map((pokemon) => (
+          {team?.length > 0 ? team.map((pokemon) => (
             <div key={pokemon.id} className="relative border rounded-md p-4">
               <h4 className="capitalize">{pokemon.name}</h4>
               <Image
@@ -83,10 +83,12 @@ export default function Create() {
               {/* @ts-ignore */}
               <button onClick={() => handleRemove(pokemon)} className="absolute top-0 right-2 hover:opacity-50 transition-opacity duration-300" >x</button>
             </div>
-          ))}
+          )) : <p>Add Pokémon to your team from the Pokédex</p> }
         </div>
-
-        <Button>Share team</Button>
+        
+        {/* @ts-ignore */}
+        { team?.length > 0 ? <Button>Share team</Button> : <Button disabled>Share team</Button>}
+        
       </form>
     </div>
   );
