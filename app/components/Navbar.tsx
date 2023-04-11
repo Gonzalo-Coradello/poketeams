@@ -12,7 +12,7 @@ export default function Navbar() {
 
     return (
     <header>
-        <nav className="font-semibold py-8 border-b-2 sm:text-lg">
+        <nav className="font-semibold text-sm py-8 border-b-2 sm:text-lg">
             <div className="flex justify-center gap-8 sm:justify-between">
                 <Link href="/" className="flex items-center gap-[2px] hover:opacity-50 transition-opacity duration-300">
                     <h1 className="hidden sm:block">Pokéteams</h1>
