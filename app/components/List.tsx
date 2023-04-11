@@ -22,11 +22,11 @@ export default function List({ pokemon }: { pokemon: PokemonInfo[] }) {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.currentTarget.value;
+    const value = e.target.value;
     setType('')
     setSearch(value);
     value
-      ? setPokemonList(pokemon.filter((p) => p.name.includes(value)))
+      ? setPokemonList(pokemon.filter((p) => p.name.includes(value.toLowerCase())))
       : setPokemonList(initialValue);
     setPage(1);
   };
