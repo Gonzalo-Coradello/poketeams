@@ -3,6 +3,8 @@ import { getData } from "../../page";
 import { PokemonInfo } from "../../page";
 import AddButton from "@/app/components/AddButton";
 import Link from "next/link";
+import LinkButton from "@/app/components/LinkButton";
+import Button from "@/app/components/Button";
 
 export async function generateMetadata({params} : { params: { id: string } }) {
   
@@ -30,10 +32,11 @@ export default async function PodemonDetail({
   };
 
   const { name, img, types, height, weight } = pokemon;
+  const id = Number(params.id)
 
   return (
     <div className="max-w-[1180px] mx-auto">
-      <Link href='/pokedex' className="block text-md text-left transition-all duration-300 hover:opacity-50">All pokemon</Link>
+      <Link href='/pokedex' className="block w-fit text-md text-left transition-all duration-300 hover:opacity-50">All pokemon</Link>
       <div className="grid justify-center border rounded w-fit mx-auto my-4 py-8 px-8 gap-4">
         <h2 className="text-3xl capitalize">{name}</h2>
         <Image src={img} alt={name} width={250} height={250} />
@@ -50,6 +53,10 @@ export default async function PodemonDetail({
           </div>
         </div>
         <AddButton pokemon={pokemon} />
+      </div>
+      <div className="max-w-[300px] mx-auto my-8 flex justify-center">
+        { id - 1 > 0 ? <LinkButton href={`/pokedex/pokemon/${id - 1}/`} >Prev</LinkButton> : <Button disabled={true} >Prev</Button> }
+        { id + 1 <= 1010 ? <LinkButton href={`/pokedex/pokemon/${id + 1}/`} >Next</LinkButton> : <Button disabled={true} >Next</Button> }
       </div>
     </div>
   );
