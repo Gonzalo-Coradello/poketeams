@@ -27,7 +27,7 @@ export default function Team({  user, createdAt, team  }: Props ) {
           <h2>{user}</h2>
           <Image src={pokeball} alt="pokeball" width={25} height={25} />
         </div>
-        <p className="font-light">{createdAt.toLocaleDateString()}</p>
+        <p className="font-light">{createdAt.toLocaleDateString("en-GB")}</p>
       </div>
       <div className="flex justify-center flex-wrap gap-4">
         {team.map((pokemon) => (
