@@ -4,9 +4,6 @@ import { PokemonInfo } from "../../page";
 import AddButton from "@/app/components/AddButton";
 import Link from "next/link";
 
-
-
-
 export async function generateMetadata({params} : { params: { id: string } }) {
   
   const data = await getData(`https://pokeapi.co/api/v2/pokemon/${params.id}/`);
@@ -32,7 +29,7 @@ export default async function PodemonDetail({
     img: data.sprites.other["official-artwork"].front_default,
   };
 
-  const { id, name, img, types, height, weight } = pokemon;
+  const { name, img, types, height, weight } = pokemon;
 
   return (
     <div className="max-w-[1180px] mx-auto">
@@ -46,6 +43,10 @@ export default async function PodemonDetail({
             {types.map((type) => (
               <p key={type} className={`bg-${type} py-1 px-3 rounded-md text-shadow`}>{type}</p>
             ))}
+          </div>
+          <div className="mt-4 grid text-left justify-center">
+            <p>Height: {height / 10} m</p>
+            <p>Weight: {weight / 10} kg</p>
           </div>
         </div>
         <AddButton pokemon={pokemon} />
