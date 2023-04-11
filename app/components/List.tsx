@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { useState } from "react";
 import Card from "./Card";
@@ -22,7 +22,7 @@ export default function List({ pokemon }: { pokemon: PokemonInfo[] }) {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const value = e.currentTarget.value;
     setType('')
     setSearch(value);
     value
